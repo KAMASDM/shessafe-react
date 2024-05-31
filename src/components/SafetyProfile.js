@@ -27,7 +27,7 @@ const SafetyProfile = ({ onClose }) => {
   useEffect(() => {
     const fetchSafetyProfile = async () => {
       try {
-        const response = await axios.get(`https://cloudconnectcampaign.com/sheissafe/api/safetysafetyprofiles/?user=${userId}`);
+        const response = await axios.get(`http://localhost:8000/api/safetysafetyprofiles/?user=${userId}`);
         if (response.data.length > 0) {
           const profile = response.data[0];
           setHealthWordText(profile.health_word_text);
@@ -84,10 +84,10 @@ const SafetyProfile = ({ onClose }) => {
       };
 
       if (isEdit) {
-        await axios.put(`https://cloudconnectcampaign.com/sheissafe/api/safetysafetyprofiles/${userId}/`, profileData, config);
+        await axios.put(`http://localhost:8000/api/safetysafetyprofiles/${userId}/`, profileData, config);
         setSuccess('Safety profile updated successfully');
       } else {
-        await axios.post('https://cloudconnectcampaign.com/sheissafe/api/safetysafetyprofiles/', profileData, config);
+        await axios.post('http://localhost:8000/api/safetysafetyprofiles/', profileData, config);
         setSuccess('Safety profile created successfully');
       }
     } catch (error) {
@@ -134,7 +134,7 @@ const SafetyProfile = ({ onClose }) => {
     formData.append('audio', audioBlob, 'audio.mp3');
 
     try {
-      const response = await axios.post('https://cloudconnectcampaign.com/sheissafe/api/convert-audio-to-text/', formData, {
+      const response = await axios.post('http://localhost:8000/api/convert-audio-to-text/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

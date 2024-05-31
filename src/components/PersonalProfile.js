@@ -23,7 +23,7 @@ const PersonalProfile = ({ onClose }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`https://cloudconnectcampaign.com/sheissafe/api//personalprofiles/?user=${userId}`);
+        const response = await axios.get(`http://localhost:8000/api/personalprofiles/?user=${userId}`);
         if (response.data.length > 0) {
           const profile = response.data[0];
           setFirstName(profile.first_name);
@@ -69,10 +69,10 @@ const PersonalProfile = ({ onClose }) => {
       };
 
       if (isEdit) {
-        await axios.put(`https://cloudconnectcampaign.com/sheissafe/api/personalprofiles/${userId}/`, profileData);
+        await axios.put(`http://localhost:8000/api/personalprofiles/${userId}/`, profileData);
         setSuccess('Profile updated successfully');
       } else {
-        await axios.post('https://cloudconnectcampaign.com/sheissafe/api/personalprofiles/', profileData);
+        await axios.post('http://localhost:8000/api/personalprofiles/', profileData);
         setSuccess('Profile created successfully');
       }
     } catch (error) {

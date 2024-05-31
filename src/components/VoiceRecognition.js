@@ -12,7 +12,7 @@ const VoiceRecognition = ({ userId, listening, setListening }) => {
   useEffect(() => {
     const fetchWords = async () => {
       try {
-        const response = await axios.get(`https://cloudconnectcampaign.com/sheissafe/api/safetysafetyprofiles/?user=${userId}`);
+        const response = await axios.get(`http://localhost:8000/api/safetysafetyprofiles/?user=${userId}`);
         if (response.data.length > 0) {
           const profile = response.data[0];
           setHealthWord(profile.health_word_text.toLowerCase());

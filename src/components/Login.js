@@ -24,7 +24,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('https://cloudconnectcampaign.com/sheissafe/api/login/', { email, password });
+      const response = await axios.post('http://localhost:8000/api/login/', { email, password });
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
       localStorage.setItem('user_id', response.data.user_id);

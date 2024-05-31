@@ -14,7 +14,7 @@ const Register = () => {
   const handleRegister = async () => {
     setError(''); // Clear previous errors
     try {
-      const response = await axios.post('https://cloudconnectcampaign.com/sheissafe/api/register/', { name, email, phone, password });
+      const response = await axios.post('http://localhost:8000/api/register/', { name, email, phone, password });
       navigate('/');
     } catch (error) {
       if (error.response) {
